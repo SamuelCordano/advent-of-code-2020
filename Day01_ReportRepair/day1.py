@@ -1,4 +1,4 @@
-inputFile = open("Day1\inputFile.txt","r")
+inputFile = open("/Users/samuelcordano/Documents/OdinProject/javascript-fundamentals/adventOfCode/Day1/inputDay1.txt","r")
 Lines = inputFile.readlines()
 
 def probleme1():
@@ -53,6 +53,4 @@ def probleme2():
         if probleme2helper(numWeAreLookingFor):
             print(currentNum)
 
-
 probleme2()
-
