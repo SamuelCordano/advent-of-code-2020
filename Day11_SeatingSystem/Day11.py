@@ -1,21 +1,6 @@
 from pprint import pprint
 import copy
 
-inputFile = open("Day11_SeatingSystem/Input.txt","r")
-Lines = inputFile.readlines()
-
-
-input_list = []
-for line in Lines:
-    input_line = []
-    currentInput = line.strip()
-    for character in currentInput:
-        input_line.append(character)
-    input_list.append(input_line)
-
-#pprint(input_list)
-current_layout = input_list
-
 def next_state(current_layout,row_position,column_position,max_row,max_column):
     """
     Example List of List: 
@@ -72,8 +57,8 @@ def next_state(current_layout,row_position,column_position,max_row,max_column):
 
 def find_number_occupied_seats(current_layout):
     counter_occupied_seats = 0
-    for row_number in range(len(input_list)):
-        for column_number in range(len(input_list[0])):
+    for row_number in range(len(current_layout)):
+        for column_number in range(len(current_layout[0])):
             if current_layout[row_number][column_number]=="#":
                 counter_occupied_seats = counter_occupied_seats+1
     return counter_occupied_seats
@@ -87,23 +72,15 @@ def find_next_round_layout(current_layout,max_row,max_column):
 
     return new_layout
 
-
 def q1(current_layout):
     max_row = int(len(current_layout))-1
     max_column = int(len(current_layout[0]))-1
     counter = 0
-    #pprint(current_layout)
     print("Start of Loop ")
     while (True):
         print(f"counter: {counter}")
         new_layout =  copy.deepcopy(current_layout)
-        #pprint(current_layout)
-        #print("Launch of find_next_round_layout ")
         new_layout = copy.deepcopy(find_next_round_layout(new_layout,max_row,max_column))
-        #print("current_layout is:")
-        #pprint(current_layout)
-        #print("new_layout is:")
-        #pprint(new_layout)
         if(current_layout == new_layout):
             print("They're equal !!")
             break
@@ -120,4 +97,19 @@ def q1(current_layout):
     result_q1 = find_number_occupied_seats(current_layout)
     print(f"The result of question 1 is: {result_q1}")
 
-q1(current_layout)
+
+
+if __name__ == "__main__":
+    inputFile = open("Day11_SeatingSystem/Input.txt","r")
+    Lines = inputFile.readlines()
+
+    input_list = []
+    for line in Lines:
+        input_line = []
+        currentInput = line.strip()
+        for character in currentInput:
+            input_line.append(character)
+        input_list.append(input_line)
+    
+    #Q1
+    q1(input_list)
