@@ -96,8 +96,7 @@ def q1(current_layout):
     #Find number of occupied seats
     result_q1 = find_number_occupied_seats(current_layout)
     print(f"The result of question 1 is: {result_q1}")
-
-
+    return result_q1
 
 if __name__ == "__main__":
     inputFile = open("Day11_SeatingSystem/Input.txt","r")
