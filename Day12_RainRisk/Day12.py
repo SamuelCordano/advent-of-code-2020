@@ -13,15 +13,10 @@ def changeDirection(currentDirection, instruction):
     return(possibleDirections[change])
 
 
-if __name__ == "__main__":
-    with open("Day12_RainRisk/Input.txt") as input:
-        inputLines = [str(line.strip()) for line in input]
-
-    # Q1
+def q1(inputLines):
     positionNorthSouth = 0
     positionEastWest = 0
     currentDirection = "E"
-    possibleDirections = ["E", "N", "W", "S"]
     for line in inputLines:
         if line[0] == "N":
             positionNorthSouth += int(line[1:])
@@ -43,4 +38,12 @@ if __name__ == "__main__":
         elif line[0] == "L" or line[0] == "R":
             currentDirection = changeDirection(currentDirection, line)
 
-    print(f"Answer Q1: {abs(positionNorthSouth)+abs(positionEastWest)}")
+    return(abs(positionNorthSouth)+abs(positionEastWest))
+
+
+if __name__ == "__main__":
+    with open("Day12_RainRisk/Input.txt") as input:
+        inputLines = [str(line.strip()) for line in input]
+
+    result_q1 = q1(inputLines)
+    print(f"Answer Q1: {result_q1}")
