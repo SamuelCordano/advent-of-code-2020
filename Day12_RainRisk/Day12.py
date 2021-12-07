@@ -13,6 +13,10 @@ def changeDirection(currentDirection, instruction):
     return(possibleDirections[change])
 
 
+def changeDirection(waypointNorthSouth, waypointEastWest, line):
+    return True
+
+
 def q1(inputLines):
     positionNorthSouth = 0
     positionEastWest = 0
@@ -37,6 +41,31 @@ def q1(inputLines):
                 positionEastWest -= int(line[1:])
         elif line[0] == "L" or line[0] == "R":
             currentDirection = changeDirection(currentDirection, line)
+
+    return(abs(positionNorthSouth)+abs(positionEastWest))
+
+
+def q2(inputLines):
+    positionNorthSouth = 0
+    positionEastWest = 0
+    waypointNorthSouth = 1
+    waypointEastWest = 10
+    currentDirection = "E"
+    for line in inputLines:
+        if line[0] == "N":
+            waypointNorthSouth += int(line[1:])
+        elif line[0] == "S":
+            waypointNorthSouth -= int(line[1:])
+        elif line[0] == "E":
+            waypointEastWest += int(line[1:])
+        elif line[0] == "W":
+            waypointEastWest -= int(line[1:])
+        elif line[0] == "F":
+            positionNorthSouth += int(line[1:]) * waypointNorthSouth
+            positionEastWest += int(line[1:]) * waypointEastWest
+        elif line[0] == "L" or line[0] == "R":
+            waypointNorthSouth, waypointEastWest = changeDirection(
+                waypointNorthSouth, waypointEastWest, line)
 
     return(abs(positionNorthSouth)+abs(positionEastWest))
 
