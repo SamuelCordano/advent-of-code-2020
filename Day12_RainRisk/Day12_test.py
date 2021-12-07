@@ -21,6 +21,10 @@ def test_changeDirection_5():
     assert "W" == Day12.changeDirection("E", "L180")
 
 
+def test_changeWaypointLocation_1():
+    assert -10, 4 == Day12.change_waypoint_location(4, 10, "R90")
+
+
 def test_q1():
     with open("Day12_RainRisk/Input.txt") as input:
         inputLines = [str(line.strip()) for line in input]
