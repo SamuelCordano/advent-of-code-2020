@@ -8,7 +8,8 @@ inputArray = []
 
 def createArray():
     """
-    Creating an Array of tuples where each row of the array is a tuple with (operation,argument,visited)
+    Creating an Array of tuples where each row of the array
+    is a tuple with (operation,argument,visited)
     """
     for line in Lines:
         currentInput = line.strip()
@@ -29,7 +30,7 @@ def applyIntruction(rowNum, accumulator):
     print(
         f"rowNum: {rowNum} // inputArray[rowNum]: {inputArray[rowNum]} // accumulator: {accumulator}")
 
-    if visitedAttribute == True:
+    if visitedAttribute:
         return accumulator
     else:
         inputArray[rowNum] = (operationAttribute, argumentAttribute, True)
